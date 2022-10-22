@@ -1,0 +1,73 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int rear=-1;
+void enqueue(int arr[],int x,int n){
+    if(rear==n-1){
+        printf("overflow\n");
+    }
+    rear++;
+    arr[rear]=x;
+}
+
+void dequeue(int arr[]){
+     if(rear==-1){
+        printf("underflow\n");
+    }
+    int front=arr[0];
+    for(int i=0;i<rear;i++){
+        arr[i]=arr[i+1];
+    }
+    rear--;
+    printf("removed element:%d\n",front);
+}
+
+void display(int arr[],int n){
+    if(rear==-1){
+        printf("empty queue\n");
+    }
+    else if(rear==n-1){
+        printf("full queue\n");
+        for(int i=0;i<=rear;i++){
+            printf("%d ",arr[i]);
+        }
+    }else{
+        for(int i=0;i<=rear;i++){
+            printf("%d ",arr[i]);
+        }
+    }
+}
+void main(){
+    int n,x,m;
+    printf("enter the size of the linear queue:");
+    scanf("%d",&n);
+    int arr[n];
+    printf("enter the number of operations:");
+    scanf("%d",&m);
+    printf("1:enqueue\n 2:dequeue\n 3:display");
+    for(int i=0;i<m;i++){
+        int k;
+        printf("enter the choice:");
+        scanf("%d",&k);
+        switch (k)
+        {
+        case 1:
+           printf("enter the value to be inserted :");
+           scanf("%d",&x);
+           enqueue(arr,x,n); 
+            break;
+        
+        case 2:
+            dequeue(arr);
+            break;
+
+        case 3:
+            display(arr,n);
+            break;    
+        default:
+            printf("invalid input\n");
+        }
+    }
+
+
+}
