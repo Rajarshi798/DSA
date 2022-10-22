@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node
+{
+    int data;
+    struct Node* next;
+};
+
+void insert_beg(int a,struct Node* head){
+    struct Node* new_node1=malloc(sizeof(struct Node));
+    if(new_node1==NULL){
+        printf("overflow");
+    }else{
+        new_node1->data=a;
+        new_node1->next=head;
+        head=new_node1;
+
+    }
+}
+void display(struct Node* temp){
+        while(temp!=NULL){
+        printf("%d ",temp->data);
+        temp=temp->next;
+    }
+}
+void main(){
+    struct Node* head=malloc(sizeof(struct Node));
+    int x,a;
+    printf("enter the value of head:");
+    scanf("%d",&x);
+    head->data=x;
+    head->next=NULL;
+    for(int i=0;i<4;i++){
+        /*printf("enter the value to be inserted:");
+        scanf("%d",&a);
+        insert_beg(a,head);*/
+        printf("the list is:");
+        display(head);
+    }
+}
